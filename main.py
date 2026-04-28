@@ -12,9 +12,8 @@ API_HASH = '0b765d2f53175c9b24abc29c4511080e'
 
 @app.get("/")
 async def home(request: Request):
-    return templates.TemplateResponse(
-        name="index.html", 
-        context={"request": request}
+    # Передаем request первым аргументом, а затем словарь с контекстом
+    return templates.TemplateResponse(request, "index.html", {"your_context_key": "value"})
     )
 
 # Сюда дописываешь функции парсинга и спама из примера выше
