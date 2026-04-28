@@ -1,10 +1,16 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
-from telethon import TelegramClient
-import os
 
-app = FastAPI()
+# 1. Создаем экземпляр приложения. 
+# Vercel ищет именно переменную с именем "app"
+app = FastAPI() 
+
 templates = Jinja2Templates(directory="templates")
+
+@app.get("/")
+async def home(request: Request):
+    # Используем правильный порядок аргументов (request первым)
+    return templates.TemplateResponse(request, "index.html")
 
 # Данные от Телеграм (вставлять сюда)
 API_ID = '38989690'
