@@ -1,25 +1,23 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 
-# 1. Создаем экземпляр приложения. 
 # Vercel ищет именно переменную с именем "app"
 app = FastAPI() 
 
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/")
-async def home(request: Request):
-    # Используем правильный порядок аргументов (request первым)
-    return templates.TemplateResponse(request, "index.html")
-
-# Данные от Телеграм (вставлять сюда)
+# Данные от Телеграм
 API_ID = '38989690'
 API_HASH = '0b765d2f53175c9b24abc29c4511080e'
 
 @app.get("/")
 async def home(request: Request):
-    # Передаем request первым аргументом, а затем словарь с контекстом
-    return templates.TemplateResponse(request, "index.html", {"your_context_key": "value"})
+    # Оставляем только одну версию функции. 
+    # Все данные для страницы (контекст) передаем в одном словаре.
+    return templates.TemplateResponse(
+        request=request, 
+        name="index.html", 
+        context={"your_context_key": "value"}
     )
 
-# Сюда дописываешь функции парсинга и спама из примера выше
+# Сюда дописываешь свои функции для работы с Telegram
