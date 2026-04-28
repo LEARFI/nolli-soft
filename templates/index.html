@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>SVLS Control Panel</title>
+    <style>
+        body { background: radial-gradient(circle, #1a1a2e 0%, #16213e 100%); color: white; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            Telegram Marketing Tool
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-xl mb-4 font-semibold text-blue-300 text-purple-400">Управление сессиями</h2>
+                <input type="text" placeholder="Phone/Session" class="w-full bg-black/30 p-2 rounded mb-2 border border-white/10">
+                <button class="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded font-bold transition">Добавить аккаунт</button>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <h2 class="text-xl mb-4 font-semibold text-blue-300">Парсинг и Спам</h2>
+                <select id="action" class="w-full bg-black/30 p-2 rounded mb-4 border border-white/10">
+                    <option value="parse_group">Парсинг участников</option>
+                    <option value="parse_comments">Парсинг комментариев</option>
+                    <option value="spam_dm">Спам в ЛС (мультиаккаунт)</option>
+                    <option value="spam_chats">Спам по чатам</option>
+                </select>
+                <textarea placeholder="База данных (юзеры/ссылки)" class="w-full bg-black/30 p-2 rounded h-24 mb-4 border border-white/10"></textarea>
+                <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 rounded font-bold">Запустить процесс</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
